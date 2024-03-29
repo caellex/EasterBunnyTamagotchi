@@ -23,3 +23,6 @@ let equationCheck = {
 }
 
 let points = 0;
+
+let eggHolderContent = "";
+let totalEggs = 0;

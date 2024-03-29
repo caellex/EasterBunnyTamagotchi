@@ -1,12 +1,24 @@
 function thirstDown() {
     thirstWidth -= 6;
+    if(thirstWidth <= 0) thirstWidth = 0;
     updateView();
+    if(thirstWidth <= 0 && hungerWidth <= 0){
+        clearInterval(thirstTimer)
+        clearInterval(foodTimer)
+        window.alert('You lost and the game has stopped. Please refresh to restart.')
+    }
 
 }
 
 function foodDown() {
     hungerWidth -= 8;
+    if(hungerWidth <= 0) hungerWidth = 0;
     updateView();
+    if(thirstWidth <= 0 && hungerWidth <= 0){
+        clearInterval(thirstTimer)
+        clearInterval(foodTimer)
+        window.alert('You lost and the game has stopped. Please refresh to restart.')
+    }
 
 
 }
@@ -37,8 +49,8 @@ function getRandomMath() {
 }
 
 function getRandomEquation() {
-    leftNum = Math.floor(Math.random() * 60)
-    rightNum = Math.floor(Math.random() * 50)
+    leftNum = Math.floor(Math.random() * 10)
+    rightNum = Math.floor(Math.random() * 10)
     operator = Math.floor(Math.random() * 3)
 
     equation = `${leftNum} ${operatorChoices[operator]} ${rightNum}`
@@ -56,7 +68,7 @@ function getRandomEquation() {
 function randomMinigame() {
 getRandomMath();
 console.log(rN)
-    if(rN < 30){
+    if(rN < 20){
 clearInterval(foodTimer);
 clearInterval(thirstTimer);
 let div = document.createElement('div');
@@ -103,11 +115,11 @@ answer.addEventListener("keypress", function(event) {
 
 function checkMath(inputValue) {
 
-    let userInput = parseFloat(inputValue)
-
-    let correctAnswer
-    switch(equationCheck.operator) {
-        case 0: 
+    let userInput = parseFloat(inputValue) // Nytt for meg, parseFloat tar en string, og omgjør det til et nummer istedenfor. (Må bruke mer før jeg fult forstår meg på den)
+                                           // Den kan også ta en string med tall og bokstaver, og fortsatt gjøre det om til et nummer hvis riktige forhold er tilstede. (Også usikker på hvordan dette virker 100%.)
+    let correctAnswer   
+    switch(equationCheck.operator) {       // Var vel på tide å prøve seg på en switch også. (Fikk en rask innføring i uke 2 eller noe slikt på første Teamoppgave av team medlem.) 
+        case 0:                            // Sjekker opp hvilken operatør som er i regne stykke, og velger riktig case utifra operatør. 
             correctAnswer = equationCheck.leftNum - equationCheck.rightNum;
             break;
         case 1: 
@@ -120,37 +132,47 @@ function checkMath(inputValue) {
             correctAnswer = equationCheck.leftNum / equationCheck.rightNum;
             break;
         default:
-            window.alert('Error')
+            window.alert('Error, try again'); // Error hvis operatør ikke er tilstede av en eller annen grunn.
+            updateView();         // Resetter og later som ingenting skjedde :D
     }
 
 
-    if(userInput === correctAnswer){
-        points++;
-        updateView();
-        console.log('correct!')
+    if(userInput === correctAnswer){        // Legger så riktig svar i en variabel, og sjekker mot bruker input.
+        awardEgg();
+        console.log('true dat');
 
     } else {
         updateView();
     }
 
-
-}
+    }
 
 function awardEgg() {
+    let div = document.createElement('div');
+    div.id = 'egg';
+    div.classList.add('egg-view');
+    totalEggs++;
 
+    document.getElementById('egg-holder').appendChild(div);
+    updateScoreView();
+    startSubTimers();
+    updateView();
 
+    if(totalEggs >= 10){
+        window.alert('You won! You can continue playing, or stop. Up to you.')
+    }
 }
 
 
 function startSubTimers() {
-    foodTimer = setInterval(foodDown, 4000)
-    thirstTimer = setInterval(thirstDown, 2000)
+    foodTimer = setInterval(foodDown, 2000)
+    thirstTimer = setInterval(thirstDown, 1000)
 
 }
 
 
-foodTimer = setInterval(foodDown, 4000)
-thirstTimer = setInterval(thirstDown, 2000)
+foodTimer = setInterval(foodDown, 2000)
+thirstTimer = setInterval(thirstDown, 1000)
 
 
 

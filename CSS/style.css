@@ -5,6 +5,12 @@ body {
     overflow: hidden;
 }
 
+#app{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
 #app-wrap {
     position: absolute;
     top: 0; 
@@ -74,17 +80,20 @@ justify-content: center;
 }
 
 #food-text {
-    top: 48px;
+    position: absolute;
+    top: 7px;
     left: 400px;
     color: rgb(222, 201, 141);
     text-shadow: 1px 1px 7px black;
     margin-top: 3%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
 
 }
 
 #thirst-text {
-
-    top: 48px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    position: absolute;
+    top: 7px;
     left: 1130px;
     color: rgb(222, 201, 141);
     text-shadow: 1px 1px 7px black;
@@ -113,10 +122,6 @@ top: 96%;
 
 }
 
-#eq-answer-wrap {
-
-}
-
 #equation-text {
 transform: scale(2);
 }
@@ -133,4 +138,36 @@ text-align: center;
 #submit-answer {
     border: 1px gold;
 
+}
+
+#egg-holder {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    align-content: flex-start;
+    position: absolute;
+    height: 400px;
+    width: 170px; 
+    max-width: 450px;
+    top: 80px;  
+}
+
+.egg-view {
+    background-image: url(../Assets/egg.png);
+    width: calc(33.33% - 10px);
+    max-width: 30px; 
+    height: 43px; 
+    margin: 0px; 
+    z-index: 1;
+    scale: 1.7;
+    margin: 10px;
+    margin-top: 16px;
+    margin-left: 12px;
+}
+
+#total-eggs-text {
+    position: absolute;
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    top: 30px;
 }

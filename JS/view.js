@@ -1,7 +1,9 @@
 
 updateView();
 function updateView(){
+
 html = /*HTML*/`
+
 
 
     <div id="statusbar-display-wrap">
@@ -26,10 +28,18 @@ html = /*HTML*/`
     <div id="bunny-display">
         <img id="bunny-img"src="bunny.png" style="z-index: 1" />
      </div>
-
+    <p id="total-eggs-text">Total Eggs: ${totalEggs}
+    <div id="egg-holder">
+    ${eggHolderContent}
+    </div>
 
 
 `
 
 app.innerHTML = html;
+}
+
+function updateScoreView() {
+    eggHolderContent = document.getElementById('egg-holder').innerHTML;
+    return eggHolderContent;
 }
