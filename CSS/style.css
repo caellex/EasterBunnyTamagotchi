@@ -1,6 +1,6 @@
 
 body {
-    background-image: url("/Assets/bg.png");
+    background-image: url("../Assets/bg.png");
     background-size: cover;
     overflow: hidden;
 }
@@ -144,7 +144,6 @@ text-align: center;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-
     align-content: flex-start;
     position: absolute;
     height: 400px;

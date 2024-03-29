@@ -165,14 +165,14 @@ function awardEgg() {
 
 
 function startSubTimers() {
-    foodTimer = setInterval(foodDown, 2000)
-    thirstTimer = setInterval(thirstDown, 1000)
+    foodTimer = setInterval(foodDown, 4000)
+    thirstTimer = setInterval(thirstDown, 2000)
 
 }
 
 
-foodTimer = setInterval(foodDown, 2000)
-thirstTimer = setInterval(thirstDown, 1000)
+foodTimer = setInterval(foodDown, 4000)
+thirstTimer = setInterval(thirstDown, 2000)
 
 
 
